@@ -6,7 +6,7 @@
 /*   By: majjig <majjig@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 18:16:29 by majjig            #+#    #+#             */
-/*   Updated: 2021/11/16 18:16:39 by majjig           ###   ########.fr       */
+/*   Updated: 2021/11/16 18:35:02 by majjig           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,22 +90,22 @@ char	*read_file(int fd, int *end)
 
 char	*get_next_line(int fd)
 {
-	static char	*remain = NULL;
+	static char	*remain[1024];
 	char		*line;
 	int			end;
 
 	end = 0;
 	if (fd < 0)
 		return (NULL);
-	if (remain)
-		line = ft_strdup(remain);
+	if (remain[fd])
+		line = ft_strdup(remain[fd]);
 	else
 		line = read_file(fd, &end);
 	while (fd >= 0)
 	{
 		if (is_nl(line) || end)
 		{
-			remain = new_remain(line, remain);
+			remain[fd] = new_remain(line, remain[fd]);
 			return (new_line(line));
 		}
 		line = ft_strjoin(line, read_file(fd, &end));
