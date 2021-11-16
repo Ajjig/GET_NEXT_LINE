@@ -1,0 +1,9 @@
+.vscode
+.DS_Store
+file.txt
+exe
+a.out
+*.o
+gnl
+tester
+exe.dSYM
