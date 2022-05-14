@@ -8,7 +8,7 @@ To use the function on your code, just include the header
 ```C
 #include "Path/get_next_line.h"
 ```
-and compile your source code with this flag
+then compile your source code with this flag
 ```Bash
 gcc -D BUFFER_SIZE={size}
 ```
